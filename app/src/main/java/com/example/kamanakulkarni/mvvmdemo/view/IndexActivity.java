@@ -34,8 +34,8 @@ public class IndexActivity extends BaseActivity {
 
         final ProductAdapter adapter = new ProductAdapter();
         binding.rvProduct.setAdapter(adapter);
-
         viewModel.fetchProductData();
+
         viewModel.liveData.observe(this, new Observer<NetworkResponse>() {
             @Override
             public void onChanged(@Nullable NetworkResponse networkResponse) {
