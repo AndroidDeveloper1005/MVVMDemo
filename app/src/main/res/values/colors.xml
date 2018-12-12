@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="thumb_background_color">#000000</color>
+    <color name="zomato_red">#a40100</color>
+    <color name="red">#FFF50410</color>
+    <color name="placeholder_background">#222322</color>
+    <color name="light_grey">#FFCCC6C6</color>
+</resources>

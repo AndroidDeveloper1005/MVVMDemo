@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Filters</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="img_filter">
+        <item>GRAY</item>
+        <item>RELIEF</item>
+        <item>AVERAGE_BLUR</item>
+        <item>OIL</item>
+        <item>NEON</item>
+        <item>PIXELATE</item>
+        <item>TV</item>
+        <item>INVERT</item>
+        <item>BLOCK</item>
+        <item>OLD</item>
+        <item>SHARPEN</item>
+        <item>LIGHT</item>
+        <item>LOMO</item>
+        <item>HDR</item>
+        <item>GAUSSIAN_BLUR</item>
+        <item>SOFT_GLOW</item>
+        <item>SKETCH</item>
+        <item>MOTION_BLUR</item>
+        <item>GOTHAM</item>
+    </string-array>
+</resources>

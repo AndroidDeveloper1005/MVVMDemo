@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.example.kamanakulkarni.mvvmdemo.viewmodel.IndexViewModel"/>
+
+        <variable
+            name="showProgress"
+            type="android.databinding.ObservableBoolean"/>
+
+        <variable
+            name="isLoading"
+            type="android.databinding.ObservableBoolean"/>
+
+    </data>
+    <RelativeLayout
+        android:background="@android:color/background_light"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include android:id="@+id/toolbar" layout="@layout/toolbar"/>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_below="@+id/toolbar"
+            android:id="@+id/swipeRefresh"
+            app:refreshing = "@{isLoading}"
+            app:onRefreshListener = "@{() -> viewModel.onRefresh()}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            android:id="@+id/rvProduct"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/zomato_red"
+            android:visibility="@{showProgress.get()?View.VISIBLE: View.GONE}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:visibility="@{progress.visibility}"
+            android:text="Loading......."
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/zomato_red"
+            android:fontFamily="cursive"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</layout>
