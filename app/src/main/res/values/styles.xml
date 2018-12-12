@@ -5,4 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="RatingBar" parent="AppTheme">
+        <item name="colorControlNormal">@color/light_grey</item>
+        <item name="colorControlActivated">@color/red</item>
+    </style>
 </resources>

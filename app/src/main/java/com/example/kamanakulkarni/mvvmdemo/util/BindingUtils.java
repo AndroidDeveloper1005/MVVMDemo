@@ -17,4 +17,5 @@ public class BindingUtils {
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.AUTOMATIC).placeholder(error))
                 .into(imageView);
     }
+
 }

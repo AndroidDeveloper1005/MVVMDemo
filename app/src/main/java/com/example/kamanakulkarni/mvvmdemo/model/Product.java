@@ -13,6 +13,7 @@ public class Product{
     private String originalPrice;
     private String sellingPrice;
     private String discount;
+    private int rating;
     private String quantityInStock;
 
     public Product(String product){
@@ -26,6 +27,7 @@ public class Product{
                 originalPrice = childJson.optString("originalPrice", "");
                 sellingPrice = childJson.optString("sellingPrice", "");
                 discount = childJson.optString("discount", "");
+                rating = childJson.optInt("rating",0);
                 quantityInStock = childJson.optString("quantityInStock", "");
             }
 
@@ -61,5 +63,10 @@ public class Product{
     public String getQuantityInStock() {
         return quantityInStock;
     }
+
+    public int getRating() {
+        return rating;
+    }
+
 
 }

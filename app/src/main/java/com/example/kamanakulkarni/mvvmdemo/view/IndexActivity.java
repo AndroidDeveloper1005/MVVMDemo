@@ -45,13 +45,6 @@ public class IndexActivity extends BaseActivity {
                 Logger.logMessage("productData", String.valueOf(viewModel.getProductList().getValue().size()));
             }
         });
-
-/*        binding.swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-
-            }
-        });*/
     }
 
 }
