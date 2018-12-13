@@ -3,6 +3,7 @@ package com.example.kamanakulkarni.mvvmdemo.adapter;
 import android.databinding.DataBindingUtil;
 import android.graphics.Paint;
 import android.support.annotation.NonNull;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -16,10 +17,10 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
-    private List<Product> productList;
+    private List<? extends Product> mProductList;
 
     public ProductAdapter(){
-        productList = new ArrayList<>();
+        mProductList = new ArrayList<>();
     }
 
     @NonNull
@@ -33,11 +34,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
 
         holder.setItem(position);
+        holder.binding.executePendingBindings();
+
     }
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return mProductList==null ? 0 : mProductList.size();//mProductList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -49,19 +52,54 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
 
         public void setItem(int position){
-            binding.setProductData(productList.get(position));
-            binding.executePendingBindings();
+            binding.setProductData(mProductList.get(position));
             binding.tvActualMRP.setPaintFlags(binding.tvActualMRP.getPaintFlags()|Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
     }
 
-    public void setProductList(List<Product> productList){
+    public void setProductList(final List<Product> productList){
+/*
+        if (mProductList!=null && !mProductList.isEmpty()){
+          //  this.mProductList.clear();
+          //  this.mProductList.addAll(mProductList);
+          //  notifyItemRangeChanged(2, mProductList.size());
+            //notifyDataSetChanged();
 
-        if (productList!=null && !productList.isEmpty()){
-            this.productList.clear();
-            this.productList.addAll(productList);
-            notifyDataSetChanged();
+
+        }*/
+
+        if (mProductList==null){
+            mProductList = productList;
+            notifyItemRangeChanged(0, productList.size());
+        }else {
+            DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
+                @Override
+                public int getOldListSize() {
+                    return mProductList.size();
+                }
+
+                @Override
+                public int getNewListSize() {
+                    return productList.size();
+                }
+
+                @Override
+                public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+                    return mProductList.get(oldItemPosition).getName() == productList.get(newItemPosition).getName();
+                }
+
+                @Override
+                public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+                    Product newProduct = productList.get(newItemPosition);
+                    Product oldProduct = mProductList.get(oldItemPosition);
+                    return (newProduct.getName() == oldProduct.getName()&& newProduct.getColor()==oldProduct.getColor());
+                    //return false;
+                }
+            });
+
+            mProductList = productList;
+            result.dispatchUpdatesTo(this);
         }
     }
 }

@@ -44,11 +44,10 @@ public class IndexViewModel extends AndroidViewModel implements WebServiceClient
 
             if (!isFromRefresh && showProgress.get()){
                 showProgress.set(false);
-            }else if (isFromRefresh && isLoading.get()){
-                isLoading.set(false);
-            } else {
-                showProgress.set(false);
-                isLoading.set(false);
+            }else {
+                if (isLoading.get())
+                    isLoading.set(false);
+
             }
 
             liveData.setValue(networkResponse);
