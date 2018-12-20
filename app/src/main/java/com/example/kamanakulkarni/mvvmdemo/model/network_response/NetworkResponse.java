@@ -1,6 +1,6 @@
-package com.example.kamanakulkarni.mvvmdemo.network_response;
+package com.example.kamanakulkarni.mvvmdemo.model.network_response;
 
-import com.example.kamanakulkarni.mvvmdemo.model.Product;
+import com.example.kamanakulkarni.mvvmdemo.model.model.Product;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -8,20 +8,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.kamanakulkarni.mvvmdemo.model.Product;
+import com.example.kamanakulkarni.mvvmdemo.callback.IProductClickListener;
+import com.example.kamanakulkarni.mvvmdemo.model.model.Product;
 import com.example.kamanakulkarni.mvvmdemo.R;
 import com.example.kamanakulkarni.mvvmdemo.databinding.RowProductBinding;
+import com.example.kamanakulkarni.mvvmdemo.model.network_call.ProductData;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
-    private List<? extends Product> mProductList;
+    private List<? extends ProductData> mProductList;
 
     public ProductAdapter(){
         mProductList = new ArrayList<>();
     }
+
+    private IProductClickListener listener;
 
     @NonNull
     @Override
@@ -52,22 +56,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
 
         public void setItem(int position){
+            binding.setCallBack(listener);
             binding.setProductData(mProductList.get(position));
             binding.tvActualMRP.setPaintFlags(binding.tvActualMRP.getPaintFlags()|Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
     }
 
-    public void setProductList(final List<Product> productList){
-/*
-        if (mProductList!=null && !mProductList.isEmpty()){
-          //  this.mProductList.clear();
-          //  this.mProductList.addAll(mProductList);
-          //  notifyItemRangeChanged(2, mProductList.size());
-            //notifyDataSetChanged();
-
-
-        }*/
+    public void setProductList(final List<ProductData> productList){
 
         if (mProductList==null){
             mProductList = productList;
@@ -91,8 +87,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
                 @Override
                 public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-                    Product newProduct = productList.get(newItemPosition);
-                    Product oldProduct = mProductList.get(oldItemPosition);
+                    ProductData newProduct = productList.get(newItemPosition);
+                    ProductData oldProduct = mProductList.get(oldItemPosition);
                     return (newProduct.getName() == oldProduct.getName()&& newProduct.getColor()==oldProduct.getColor());
                     //return false;
                 }
@@ -101,5 +97,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             mProductList = productList;
             result.dispatchUpdatesTo(this);
         }
+    }
+
+    public void setProductListener(IProductClickListener listener){
+        this.listener = listener;
     }
 }

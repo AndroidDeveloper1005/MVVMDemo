@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<LinearLayout
+    android:padding="12dp"
+    android:background="@android:color/white"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivProduct"
+        android:layout_marginBottom="@dimen/dimen_8dp"
+        android:contentDescription="@string/product_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_250dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:contentDescription="@string/product_image_thumbnail"
+        android:id="@+id/rvProductThumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+
+    <TextView
+        android:layout_marginTop="@dimen/dimen_8dp"
+        tools:text="@string/product_name"
+        android:textColor="@android:color/black"
+        android:contentDescription="@string/product_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        tools:text="Special prize available before 27th"
+        android:id="@+id/tvOffer"
+        android:textColor="@color/offer_green"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:textSize="24sp"
+        android:padding="4dp"
+        tools:text="Rs. 2413"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:contentDescription="selling mrp"
+        android:id="@+id/tvSellingMRP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginStart="4dp"
+        android:padding="4dp"
+        tools:text="Rs. 2413"
+        android:textColor="@android:color/black"
+        android:contentDescription="selling mrp"
+        android:id="@+id/tvOriginalMRP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:padding="4dp"
+        android:layout_marginStart="4dp"
+        tools:text="33% Off"
+        android:textColor="@color/offer_green"
+        android:contentDescription="selling mrp"
+        android:id="@+id/tvDiscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+<!--    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:background="@color/offer_green"
+            android:padding="4dp"
+            tools:text="Rs. 2413"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:contentDescription="selling mrp"
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginStart="4dp"
+            android:padding="4dp"
+            tools:text="Rs. 2413"
+            android:textColor="@android:color/black"
+            android:contentDescription="selling mrp"
+            android:id="@+id/tvOriginalMRP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:padding="4dp"
+            android:layout_marginStart="4dp"
+            tools:text="33% Off"
+            android:textColor="@color/offer_green"
+            android:contentDescription="selling mrp"
+            android:id="@+id/tvDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>-->
+
+</LinearLayout>
+</layout>

@@ -5,11 +5,19 @@
 
     <data>
         <import type="android.view.View"/>
+
+        <variable
+            name="callBack"
+            type="com.example.kamanakulkarni.mvvmdemo.callback.IProductClickListener"/>
+
         <variable
             name="productData"
-            type="com.example.kamanakulkarni.mvvmdemo.model.Product"/>
+            type="com.example.kamanakulkarni.mvvmdemo.model.network_call.ProductData"/>
+
     </data>
+
     <RelativeLayout
+        android:onClick="@{() -> callBack.onProductClick(productData)}"
         android:layout_marginBottom="4dp"
         android:background="@android:color/white"
         android:padding="5dp"

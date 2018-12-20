@@ -1,4 +1,4 @@
-package com.example.kamanakulkarni.mvvmdemo.model;
+package com.example.kamanakulkarni.mvvmdemo.model.model;
 
 import android.databinding.BaseObservable;
 
